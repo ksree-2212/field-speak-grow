@@ -8,89 +8,130 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Smart Agriculture Color System */
+    --background: 45 15% 96%;
+    --foreground: 120 15% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 120 15% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 120 15% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Agricultural Green Theme */
+    --primary: 120 60% 25%;
+    --primary-foreground: 0 0% 98%;
+    --primary-hover: 120 65% 20%;
+    --primary-glow: 120 55% 40%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Earth Tones */
+    --secondary: 30 25% 80%;
+    --secondary-foreground: 30 30% 25%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 45 20% 90%;
+    --muted-foreground: 120 10% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Golden Harvest Accent */
+    --accent: 45 85% 55%;
+    --accent-foreground: 30 30% 15%;
+    --accent-glow: 45 90% 70%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Status Colors */
+    --success: 120 50% 45%;
+    --success-foreground: 0 0% 98%;
+    --warning: 35 85% 55%;
+    --warning-foreground: 30 30% 15%;
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Soil Health Colors */
+    --soil-excellent: 120 60% 40%;
+    --soil-good: 120 50% 50%;
+    --soil-moderate: 45 80% 50%;
+    --soil-poor: 15 85% 55%;
+    --soil-critical: 0 75% 55%;
 
-    --radius: 0.5rem;
+    /* Interface Elements */
+    --border: 120 15% 85%;
+    --input: 120 15% 90%;
+    --ring: 120 60% 25%;
 
-    --sidebar-background: 0 0% 98%;
+    --radius: 0.75rem;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-harvest: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-glow)));
+    --gradient-earth: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
 
-    --sidebar-primary: 240 5.9% 10%;
+    /* Voice UI */
+    --voice-active: 120 70% 45%;
+    --voice-listening: 200 80% 50%;
+    --voice-processing: 45 85% 55%;
 
-    --sidebar-primary-foreground: 0 0% 98%;
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(var(--primary) / 0.1);
+    --shadow-card: 0 8px 30px -8px hsl(var(--primary) / 0.15);
+    --shadow-voice: 0 0 30px hsl(var(--voice-active) / 0.4);
 
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-voice: all 0.2s ease-in-out;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Dark Agricultural Theme */
+    --background: 120 15% 8%;
+    --foreground: 45 20% 90%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 120 20% 12%;
+    --card-foreground: 45 20% 90%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 120 20% 12%;
+    --popover-foreground: 45 20% 90%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 120 55% 45%;
+    --primary-foreground: 120 20% 8%;
+    --primary-hover: 120 60% 50%;
+    --primary-glow: 120 50% 55%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 30 15% 20%;
+    --secondary-foreground: 30 20% 80%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 120 10% 15%;
+    --muted-foreground: 120 8% 60%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 45 80% 60%;
+    --accent-foreground: 30 30% 10%;
+    --accent-glow: 45 85% 70%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --success: 120 55% 50%;
+    --success-foreground: 120 20% 8%;
+    --warning: 35 80% 60%;
+    --warning-foreground: 30 30% 10%;
+    --destructive: 0 70% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --soil-excellent: 120 60% 50%;
+    --soil-good: 120 50% 55%;
+    --soil-moderate: 45 75% 60%;
+    --soil-poor: 15 80% 60%;
+    --soil-critical: 0 70% 60%;
+
+    --border: 120 15% 20%;
+    --input: 120 15% 18%;
+    --ring: 120 55% 45%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-harvest: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-glow)));
+    --gradient-earth: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
+
+    --voice-active: 120 65% 55%;
+    --voice-listening: 200 75% 60%;
+    --voice-processing: 45 80% 65%;
+
+    --shadow-soft: 0 4px 20px -4px hsl(var(--primary) / 0.2);
+    --shadow-card: 0 8px 30px -8px hsl(var(--primary) / 0.25);
+    --shadow-voice: 0 0 30px hsl(var(--voice-active) / 0.5);
   }
 }
 
@@ -100,6 +141,54 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Voice UI Animations */
+  @keyframes pulse-voice {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+  }
+
+  @keyframes ripple {
+    0% { transform: scale(0.8); opacity: 1; }
+    100% { transform: scale(2.4); opacity: 0; }
+  }
+
+  @keyframes grow-in {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  .animate-pulse-voice {
+    animation: pulse-voice 2s ease-in-out infinite;
+  }
+
+  .animate-ripple {
+    animation: ripple 1.5s ease-out infinite;
+  }
+
+  .animate-grow-in {
+    animation: grow-in 0.3s ease-out;
+  }
+
+  /* High contrast accessibility */
+  .high-contrast {
+    --primary: 120 100% 20%;
+    --accent: 45 100% 40%;
+    --border: 120 50% 40%;
+  }
+
+  /* Large touch targets for accessibility */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Focus styles for accessibility */
+  .focus-visible:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
   }
 }
