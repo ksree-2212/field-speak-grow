@@ -71,7 +71,7 @@ export const useVoice = () => {
         let preferredVoice = null;
         const currentLang = i18n.language;
         
-        // Try to find the best voice for current language with more specific matching
+        // Try to find the best voice for current language with fallbacks
         if (currentLang === 'hi') {
           preferredVoice = voices.find(voice => 
             voice.lang.toLowerCase().includes('hi-in') || 
@@ -80,18 +80,30 @@ export const useVoice = () => {
             voice.lang.startsWith('hi')
           );
         } else if (currentLang === 'te') {
+          // Telugu voice fallback: try Hindi first, then English India, then any English
           preferredVoice = voices.find(voice => 
             voice.lang.toLowerCase().includes('te-in') || 
             voice.lang.toLowerCase().includes('telugu') || 
             voice.name.toLowerCase().includes('telugu') ||
             voice.lang.startsWith('te')
+          ) || voices.find(voice => 
+            voice.lang.toLowerCase().includes('hi-in') || 
+            voice.name.toLowerCase().includes('hindi')
+          ) || voices.find(voice => 
+            voice.lang === 'en-IN'
           );
         } else if (currentLang === 'ta') {
+          // Tamil voice fallback: try Hindi first, then English India, then any English
           preferredVoice = voices.find(voice => 
             voice.lang.toLowerCase().includes('ta-in') || 
             voice.lang.toLowerCase().includes('tamil') || 
             voice.name.toLowerCase().includes('tamil') ||
             voice.lang.startsWith('ta')
+          ) || voices.find(voice => 
+            voice.lang.toLowerCase().includes('hi-in') || 
+            voice.name.toLowerCase().includes('hindi')
+          ) || voices.find(voice => 
+            voice.lang === 'en-IN'
           );
         } else {
           preferredVoice = voices.find(voice => 
