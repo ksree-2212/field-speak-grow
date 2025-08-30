@@ -32,9 +32,13 @@ export const useVoice = () => {
       const recognition = new SpeechRecognition();
       recognition.continuous = false;
       recognition.interimResults = true;
-      recognition.lang = i18n.language === 'hi' ? 'hi-IN' : 
-                       i18n.language === 'te' ? 'te-IN' :
-                       i18n.language === 'ta' ? 'ta-IN' : 'en-US';
+      const langMap = {
+        'hi': 'hi-IN',
+        'te': 'te-IN', 
+        'ta': 'ta-IN',
+        'en': 'en-US'
+      };
+      recognition.lang = langMap[i18n.language as keyof typeof langMap] || 'en-US';
 
       recognition.onstart = () => {
         dispatch(startListening());
@@ -67,18 +71,27 @@ export const useVoice = () => {
         let preferredVoice = null;
         const currentLang = i18n.language;
         
-        // Try to find the best voice for current language
+        // Try to find the best voice for current language with more specific matching
         if (currentLang === 'hi') {
           preferredVoice = voices.find(voice => 
-            voice.lang.includes('hi') || voice.lang.includes('Hindi') || voice.name.toLowerCase().includes('hindi')
+            voice.lang.toLowerCase().includes('hi-in') || 
+            voice.lang.toLowerCase().includes('hindi') || 
+            voice.name.toLowerCase().includes('hindi') ||
+            voice.lang.startsWith('hi')
           );
         } else if (currentLang === 'te') {
           preferredVoice = voices.find(voice => 
-            voice.lang.includes('te') || voice.lang.includes('Telugu') || voice.name.toLowerCase().includes('telugu')
+            voice.lang.toLowerCase().includes('te-in') || 
+            voice.lang.toLowerCase().includes('telugu') || 
+            voice.name.toLowerCase().includes('telugu') ||
+            voice.lang.startsWith('te')
           );
         } else if (currentLang === 'ta') {
           preferredVoice = voices.find(voice => 
-            voice.lang.includes('ta') || voice.lang.includes('Tamil') || voice.name.toLowerCase().includes('tamil')
+            voice.lang.toLowerCase().includes('ta-in') || 
+            voice.lang.toLowerCase().includes('tamil') || 
+            voice.name.toLowerCase().includes('tamil') ||
+            voice.lang.startsWith('ta')
           );
         } else {
           preferredVoice = voices.find(voice => 
