@@ -60,17 +60,48 @@ export const useVoice = () => {
       dispatch(setSynthesis(speechSynthesis));
 
       // Set default voice for current language
-      speechSynthesis.onvoiceschanged = () => {
+      const setVoiceForLanguage = () => {
         const voices = speechSynthesis.getVoices();
-        const preferredVoice = voices.find(voice => 
-          voice.lang.startsWith(i18n.language === 'hi' ? 'hi' : 
-                                i18n.language === 'te' ? 'te' :
-                                i18n.language === 'ta' ? 'ta' : 'en')
-        );
+        console.log('Available voices:', voices.map(v => ({ name: v.name, lang: v.lang })));
+        
+        let preferredVoice = null;
+        const currentLang = i18n.language;
+        
+        // Try to find the best voice for current language
+        if (currentLang === 'hi') {
+          preferredVoice = voices.find(voice => 
+            voice.lang.includes('hi') || voice.lang.includes('Hindi') || voice.name.toLowerCase().includes('hindi')
+          );
+        } else if (currentLang === 'te') {
+          preferredVoice = voices.find(voice => 
+            voice.lang.includes('te') || voice.lang.includes('Telugu') || voice.name.toLowerCase().includes('telugu')
+          );
+        } else if (currentLang === 'ta') {
+          preferredVoice = voices.find(voice => 
+            voice.lang.includes('ta') || voice.lang.includes('Tamil') || voice.name.toLowerCase().includes('tamil')
+          );
+        } else {
+          preferredVoice = voices.find(voice => 
+            voice.lang.startsWith('en') || voice.lang.includes('English')
+          );
+        }
+        
+        // Fallback to any voice if no language-specific voice found
+        if (!preferredVoice && voices.length > 0) {
+          preferredVoice = voices[0];
+        }
+        
+        console.log('Selected voice:', preferredVoice?.name, preferredVoice?.lang);
         if (preferredVoice) {
           dispatch(setCurrentVoice(preferredVoice));
         }
       };
+
+      speechSynthesis.onvoiceschanged = setVoiceForLanguage;
+      // Call immediately in case voices are already loaded
+      if (speechSynthesis.getVoices().length > 0) {
+        setVoiceForLanguage();
+      }
     } else {
       dispatch(setSupported(false));
     }
@@ -98,6 +129,16 @@ export const useVoice = () => {
       voice.synthesis.cancel();
 
       const utterance = new SpeechSynthesisUtterance(text);
+      
+      // Set language based on current i18n language
+      const langMap = {
+        'hi': 'hi-IN',
+        'te': 'te-IN', 
+        'ta': 'ta-IN',
+        'en': 'en-US'
+      };
+      utterance.lang = langMap[i18n.language as keyof typeof langMap] || 'en-US';
+      
       utterance.voice = voice.currentVoice;
       utterance.volume = voice.volume;
       utterance.rate = voice.rate;
@@ -112,14 +153,16 @@ export const useVoice = () => {
         onEnd?.();
       };
 
-      utterance.onerror = () => {
+      utterance.onerror = (event) => {
+        console.error('Speech synthesis error:', event);
         dispatch(stopSpeaking());
         dispatch(setError('Speech synthesis failed'));
       };
 
+      console.log('Speaking text:', text, 'in language:', utterance.lang, 'with voice:', voice.currentVoice?.name);
       voice.synthesis.speak(utterance);
     }
-  }, [voice.synthesis, voice.currentVoice, voice.volume, voice.rate, voice.pitch, settings.voiceEnabled, dispatch]);
+  }, [voice.synthesis, voice.currentVoice, voice.volume, voice.rate, voice.pitch, settings.voiceEnabled, dispatch, i18n.language]);
 
   const stopSpeakingAction = useCallback(() => {
     if (voice.synthesis) {
