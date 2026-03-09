@@ -1,73 +1,116 @@
-# Welcome to your Lovable project
+🌱 Crop Recognition and Disease Detection System
 
-## Project info
+📌 Project Overview
 
-**URL**: https://lovable.dev/projects/24fa3190-f6fd-4e49-a6d6-7e41646b61a4
+This project is a web-based application that identifies crop types and detects possible diseases from images. The system allows users to upload an image of a plant or crop leaf, after which the model analyzes the image and predicts:
 
-## How can I edit this code?
+- The crop type
+- The disease affecting the crop (if any)
 
-There are several ways of editing your application.
+This application can assist farmers, researchers, and agricultural enthusiasts in identifying crop diseases early and taking appropriate preventive actions.
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/24fa3190-f6fd-4e49-a6d6-7e41646b61a4) and start prompting.
+🎯 Features
 
-Changes made via Lovable will be committed automatically to this repo.
+- 🌾 Crop Identification – Recognizes the type of crop from uploaded images.
+- 🦠 Disease Detection – Detects diseases affecting crops.
+- 📷 Image Upload – Users can upload plant or leaf images.
+- ⚡ Fast Predictions – Provides quick results after image processing.
+- 🖥 User-Friendly Interface – Clean and responsive UI for easy usage.
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+🛠 Technologies Used
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+The project is built using the following technologies:
 
-Follow these steps:
+- React – Frontend UI development
+- TypeScript – Type-safe JavaScript
+- Vite – Fast development build tool
+- Tailwind CSS – Styling and responsive design
+- shadcn/ui – UI component library
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+📂 Project Structure
 
-# Step 3: Install the necessary dependencies.
-npm i
+project-root
+│
+├── public/            # Static assets
+├── src/
+│   ├── components/    # Reusable UI components
+│   ├── pages/         # Application pages
+│   ├── utils/         # Helper functions
+│   └── App.tsx        # Main application component
+│
+├── package.json       # Project dependencies
+├── vite.config.ts     # Vite configuration
+└── README.md          # Project documentation
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+---
+
+⚙️ Installation and Setup
+
+Follow these steps to run the project locally.
+
+1. Clone the Repository
+
+git clone <YOUR_GIT_REPOSITORY_URL>
+
+2. Navigate to the Project Folder
+
+cd <PROJECT_FOLDER_NAME>
+
+3. Install Dependencies
+
+npm install
+
+4. Run the Development Server
+
 npm run dev
-```
 
-**Edit a file directly in GitHub**
+The application will start and can be accessed in your browser at:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+http://localhost:5173
 
-**Use GitHub Codespaces**
+---
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+🚀 Deployment
 
-## What technologies are used for this project?
+To build the project for production:
 
-This project is built with:
+npm run build
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+The production files will be generated in the "dist" folder. These files can be deployed using hosting platforms such as:
 
-## How can I deploy this project?
+- Vercel
+- Netlify
+- GitHub Pages
+- Firebase Hosting
 
-Simply open [Lovable](https://lovable.dev/projects/24fa3190-f6fd-4e49-a6d6-7e41646b61a4) and click on Share -> Publish.
+---
 
-## Can I connect a custom domain to my Lovable project?
+📊 Future Improvements
 
-Yes, you can!
+- Integration with advanced deep learning models for improved disease detection
+- Support for additional crop varieties
+- Mobile-friendly interface enhancements
+- Suggestions for treatments and preventive measures for detected diseases
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+---
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+🤝 Contribution
+
+Contributions are welcome.
+
+1. Fork the repository
+2. Create a new branch
+3. Commit your changes
+4. Submit a pull request
+
+---
+
+📜 License
+
+This project is developed for educational and research purposes.
